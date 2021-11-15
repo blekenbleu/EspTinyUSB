@@ -4,7 +4,6 @@
 #include "diskio.h"
 #ifdef CFG_TUD_MSC
 static uint8_t _buf[4 * 1024] = {};
-//const std::string path_fatfs = "/fatfs";
 // 'static' may not be used when defining (as opposed to declaring) a static data member
 // ISO C++ forbids converting a string constant to 'char*'
 char FlashUSB::path_fatfs[] = "/fatfs";
