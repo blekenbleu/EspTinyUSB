@@ -4,6 +4,10 @@
 #include "diskio.h"
 #ifdef CFG_TUD_MSC
 static uint8_t _buf[4 * 1024] = {};
+//const std::string path_fatfs = "/fatfs";
+// 'static' may not be used when defining (as opposed to declaring) a static data member
+// ISO C++ forbids converting a string constant to 'char*'
+char FlashUSB::path_fatfs[] = "/fatfs";
 
 class FlashCallbacks : public MSCCallbacks {
     FlashUSB* m_parent;
@@ -59,6 +63,7 @@ public:
         if (m_parent->m_private)
         {
             // return m_parent->m_private->onStop(lun);
+            return -1;	// warning: control reaches end of non-void function
         } else {
             (void) lun;
             (void) power_condition;
@@ -94,6 +99,7 @@ public:
         if (m_parent->m_private)
         {
             // return m_parent->m_private->onRead(lun);
+            return -1;	// warning: control reaches end of non-void function
         } else {
             log_v("default onread");
             (void) lun;
@@ -113,6 +119,7 @@ public:
         if (m_parent->m_private)
         {
             // return m_parent->m_private->onWrite(lun);
+            return -1;	// warning: control reaches end of non-void function
         } else {
             log_v("default onwrite; lba: %d, off: %d, size: %d", lba, offset, bufsize);
             (void) lun;
