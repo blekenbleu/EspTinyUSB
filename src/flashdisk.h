@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "mscusb.h"
 #include "esp_vfs_fat.h"
 
@@ -12,7 +13,7 @@ class FlashUSB : public MSCusb {
 public:
     FlashUSB(bool aes = false);
     bool begin(char* str = nullptr);
-    bool init(char* path = "/fatfs",char* label = NULL);
+    bool init(char* path = path_fatfs,char* label = NULL);
     void setCallbacks(MSCCallbacks*);
     void setCapacity(uint32_t count, uint32_t size);
     bool isReady();
@@ -22,6 +23,8 @@ public:
     uint32_t block_size = 0;
     bool sdcardReady;
     bool encrypted;
+private:
+    static char path_fatfs[];
 };
 
 #endif
