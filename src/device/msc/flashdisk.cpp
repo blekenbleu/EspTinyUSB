@@ -2,7 +2,8 @@
 #include "ffconf.h"
 #include "ff.h"
 #include "diskio.h"
-#ifdef CFG_TUD_MSC
+//#ifdef CFG_TUD_MSC
+#if CFG_TUD_MSC
 static uint8_t _buf[4 * 1024] = {};
 // 'static' may not be used when defining (as opposed to declaring) a static data member
 // ISO C++ forbids converting a string constant to 'char*'
